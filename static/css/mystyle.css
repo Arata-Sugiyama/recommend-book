@@ -1,0 +1,16 @@
+body, #wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: radial-gradient(#F2B9A1, #EA6264);
+}
+
+
+footer {
+    margin-top: auto;
+}
+
+.my-div-style {
+    margin-top:6rem;
+}
+

@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}本一覧 | recommend book{% endblock %}
+
+{% block active_post_list %}active{% endblock %}
+
+{% block head %}
+<link href="{% static 'css/clean-blog.min.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block contents %}
+<div class="container" style="background:#F2B9A1;">
+    <div class="row">
+        <div class="my-div-style w-100">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="clearfix">
+
+                </div>
+                {% for post in post_list %}
+                    <div class="post-preview">
+                        <a href="{% url 'posts:post_detail' post.pk %}">
+                          <h2 class="post-title">
+                              タイトル:
+                            {{ post.title|truncatechars:10 }}
+
+                          </h2>
+                          <h4 class="post-content">
+                              内容:
+                            {{ post.content|truncatechars:20 }}
+                          </h4>
+                            </a>
+
+                        <div class="col-3">
+                {% if post.photo1 %}
+                     <a href="{% url 'posts:post_detail' post.pk %}">
+                    <img src="{{ post.photo1.url }}" width="200" height="200"/>
+                     </a>
+                {% endif %}
+            </div>
+            <div class="col-3">
+                {% if post.photo2 %}
+                <a href="{% url 'posts:post_detail' post.pk %}">
+                    <img src="{{ post.photo2.url }}" width="200" height="200"/>
+                </a>
+                {% endif %}
+            </div>
+            <div class="col-3">
+                {% if post.photo3 %}
+                <a href="{% url 'posts:post_detail' post.pk %}">
+                    <img src="{{ post.photo3.url }}" width="200" height="200"/>
+                </a>
+                {% endif %}
+            </div>
+                        <p class="post-meta" style="color:black;">投稿者:{{ post.user }}<br>投稿日:{{ post.created_at }}</p>
+                    </div>
+                <hr>
+                {% empty %}
+                    <p>日記がありません。</p>
+
+                {% endfor %}
+
+                <!-- ページネーション処理 -->
+                {% if is_paginated %}
+                    <ul class="pagination">
+                        <!-- 前ページへのリンク -->
+                        {% if page_obj.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                        {% endif %}
+
+                        <!-- ページ数表示 -->
+                        {% for page_num in page_obj.paginator.page_range %}
+                            {% if page_obj.number == page_num %}
+                                <li class="page-item active"><a class="page-link" href="#">{{ page_num }}</a></li>
+                            {% else %}
+                                <li class="page-item"><a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+
+                        <!-- 次ページへのリンク -->
+                        {% if page_obj.has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page_obj.next_page_number }}">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
