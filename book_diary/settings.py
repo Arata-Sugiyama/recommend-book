@@ -179,3 +179,16 @@ MEDIA_ROOT = os.path.join(BASE_DIR,"media")
 MEDIA_URL = "/media/"
 
 LOGIN_REDIRECT_URL = "posts:post_list"
+
+#security.W004
+SECURE_HSTS_SECONDS = 31536000
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+
+#security.W008
+SECURE_SSL_REDIRECT = True
+
+#security.W012
+SESSION_COOKIE_SECURE = True
+
+#security.W016
+CSRF_COOKIE_SECURE = True
