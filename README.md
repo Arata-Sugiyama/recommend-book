@@ -3,7 +3,7 @@
  2020年6月  
 
 2.制作期間  
-　約2週間  
+約2週間  
 
 3.使用したツール  
  Python,Django,HTML,CSS,Bootstrap,Pythonanywhere  
