@@ -180,6 +180,7 @@ MEDIA_URL = "/media/"
 
 LOGIN_REDIRECT_URL = "posts:post_list"
 
+"""
 #security.W008
 SECURE_SSL_REDIRECT = True
 
@@ -194,5 +195,5 @@ SECURE_HSTS_PRELOAD=True
 
 #security.W022
 SECURE_REFERRER_POLICY="no-referrer"
-
+"""
 
