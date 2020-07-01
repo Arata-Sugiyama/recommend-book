@@ -43,9 +43,6 @@
               <ul class="navbar-nav mr-auto">
 
                   {% if user.is_authenticated %}
-                  <li class="nav-item">
-                  <a class="nav-link" href="{% url 'accounts:mypage' %}" style="text-transform:none;">{{ user }}</a>
-                  </li>
                   <li class="nav-item {% block active_post_list %}{% endblock %}">
                       <a class="nav-link" href="{% url 'posts:post_list' %}">BOOK LIST</a>
                   </li>
